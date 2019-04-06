@@ -1,0 +1,26 @@
+CC = gcc
+SHDIR := ../common
+CFLAGS := -Wall -g -lpthread -D _DEBUG 
+OBJS = Master.o $(SHDIR)/common.o
+# test
+all: a.out
+    @echo "This is OK!"
+
+pihealthd: $(OBJS)
+    @$(CC) -o $@ $(CFLAGS) $(OBJS)
+
+$(OBJS): %.o : %.c
+    @$(CC) -c $(CFLAGS) $< -o $@
+
+.PHONY: clean
+
+clean:
+	@rm -f *.o pihealthd
+    @rm -f ../common/*.o
+    @echo "Done cleaning!"
+
+install: pihealthd install.sh pihealthd.conf.sample
+    @test -f /etc/pihealthd.conf || cp pihealthd.conf.sample /etc/pihealthd.conf
+    @bash install.sh
+    @cp -f pihealthd /usr/bin/ 
+    @echo "PiHealthd installed!"
