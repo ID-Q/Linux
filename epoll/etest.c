@@ -32,7 +32,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#define PORT        9006
+#define PORT        8731
 #define MAXSIZE     1024
 #define LISTENQ     20
 #define FDSIZE      1000
