@@ -403,6 +403,12 @@ void modify_event(int epollfd, int fd, int state) {
 }
 ```
 
+## epoll运行
+
+![epoll_server](./pic/epoll_server.png)
+
+![epoll_clent](./pic/epoll_clent.png)
+
 ## epoll总结
 
 epoll的优点：
