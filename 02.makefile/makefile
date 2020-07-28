@@ -27,4 +27,3 @@ threadpool.o : ./threadpool/threadpool.c ./threadpool/threadpool.h
 
 clean:
 	rm -rf *.o ./a.out
-
