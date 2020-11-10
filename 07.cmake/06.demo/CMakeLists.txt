@@ -28,11 +28,11 @@ endif (NOT HAVE_POW)
 aux_source_directory(. DIR_SRCS)
 
 # 指定生成目标
-add_executable(Demo ${DIR_SRCS})
-target_link_libraries (Demo  ${EXTRA_LIBS})
+add_executable(07.demo ${DIR_SRCS})
+target_link_libraries (07.demo  ${EXTRA_LIBS})
 
 # 指定安装路径
-install (TARGETS Demo DESTINATION bin)
+install (TARGETS 07.demo DESTINATION bin)
 install (FILES "${PROJECT_BINARY_DIR}/config.h"
          DESTINATION include)
 
@@ -40,16 +40,16 @@ install (FILES "${PROJECT_BINARY_DIR}/config.h"
 enable_testing()
 
 # 测试程序是否成功运行
-add_test (test_run Demo 5 2)
+add_test (test_run 07.demo 5 2)
 
 # 测试帮助信息是否可以正常提示
-add_test (test_usage Demo)
+add_test (test_usage 07.demo)
 set_tests_properties (test_usage
   PROPERTIES PASS_REGULAR_EXPRESSION "Usage: .* base exponent")
 
 # 定义一个宏，用来简化测试工作
 macro (do_test arg1 arg2 result)
-  add_test (test_${arg1}_${arg2} Demo ${arg1} ${arg2})
+  add_test (test_${arg1}_${arg2} 07.demo ${arg1} ${arg2})
   set_tests_properties (test_${arg1}_${arg2}
     PROPERTIES PASS_REGULAR_EXPRESSION ${result})
 endmacro (do_test)
