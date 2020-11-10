@@ -1,7 +1,7 @@
 cmake_minimum_required (VERSION 2.8)
 
 # 项目信息
-project (Demo8)
+project (08.demo)
 set (Demo_VERSION_MAJOR 1)
 set (Demo_VERSION_MINOR 0)
 
@@ -29,11 +29,11 @@ endif (NOT HAVE_POW)
 aux_source_directory(. DIR_SRCS)
 
 # 指定生成目标
-add_executable(Demo ${DIR_SRCS})
-target_link_libraries (Demo  ${EXTRA_LIBS})
+add_executable(08.demo ${DIR_SRCS})
+target_link_libraries (08.demo  ${EXTRA_LIBS})
 
 # 指定安装路径
-install (TARGETS Demo DESTINATION bin)
+install (TARGETS 08.demo DESTINATION bin)
 install (FILES "${PROJECT_BINARY_DIR}/config.h"
          DESTINATION include)
 
@@ -41,16 +41,16 @@ install (FILES "${PROJECT_BINARY_DIR}/config.h"
 enable_testing()
 
 # 测试程序是否成功运行
-add_test (test_run Demo 5 2)
+add_test (test_run 08.demo 5 2)
 
 # 测试帮助信息是否可以正常提示
-add_test (test_usage Demo)
+add_test (test_usage 08.demo)
 set_tests_properties (test_usage
   PROPERTIES PASS_REGULAR_EXPRESSION "Usage: .* base exponent")
 
 # 定义一个宏，用来简化测试工作
 macro (do_test arg1 arg2 result)
-  add_test (test_${arg1}_${arg2} Demo ${arg1} ${arg2})
+  add_test (test_${arg1}_${arg2} 08.demo ${arg1} ${arg2})
   set_tests_properties (test_${arg1}_${arg2}
     PROPERTIES PASS_REGULAR_EXPRESSION ${result})
 endmacro (do_test)
